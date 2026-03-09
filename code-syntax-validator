@@ -1,0 +1,52 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class Main {
+    public static void main(String[] args) {System.out.println("Code Syntax validator");
+     
+     String s ="{[()]}";
+     Stack_Syntax st = new Stack_Syntax();
+     boolean flag = true;
+     for (int i =0;i<s.length();i++){
+         char ch = s.charAt(i);
+         if(ch=='('|| ch=='{'||ch=='['){
+             st.push(ch);
+             
+         }
+         else{
+             if(st.isEmpty()){
+                 flag=false;
+                 break;
+             }
+             char x= st.pop();
+             
+         }
+     }    
+     if(!st.isEmpty())
+     flag=false;
+     if(flag)
+     System.out.println("Balanced");
+     else
+     System.out.println("Not Balanced");
+
+    
+    }
+}
+class Stack_Syntax {
+    char arr[] = new char[100];
+    int top =-1;
+    void push (char ch) {
+        top++;
+        arr[top]=ch;
+    }
+    char pop(){
+        char ch = arr[top];
+        top--;
+        return ch;
+    }
+    boolean isEmpty(){
+        return top ==-1;
+    
+    }
+}
+
